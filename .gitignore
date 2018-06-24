@@ -1,0 +1,4 @@
+vendor/*
+!vendor/.empty
+repos/*
+!repos/.empty
