@@ -23,11 +23,7 @@ func main() {
 	c.OnHTML("a.project[href]", func(e *colly.HTMLElement) {
 		link := e.Attr("href")
 		repositoryDownload := ENDPOINT + link + "/repository/archive.zip?ref=master"
-		err := DownloadFile(strings.Replace(link, "/", "-", -1)[1:]+".zip", repositoryDownload)
-		if err != nil {
-			panic(err)
-		}
-
+		go DownloadFile(strings.Replace(link, "/", "-", -1)[1:]+".zip", repositoryDownload)
 	})
 
 	c.OnHTML("li.next a[href]", func(e *colly.HTMLElement) {
